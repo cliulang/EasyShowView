@@ -56,7 +56,8 @@
     __block CGFloat contentHeight = 0 ;//计算bgcontentview的高度
     if (!ISEMPTY_S(self.emptyItem.imageName)) {
         UIImage *defaultImage = [UIImage imageNamed:self.emptyItem.imageName];
-        CGSize imageSize = defaultImage.size ;
+        CGFloat scale = [UIScreen mainScreen].scale;
+        CGSize imageSize = CGSizeMake(defaultImage.size.width/scale, defaultImage.size.height/scale) ;
         if (imageSize.width > contentWidth*2/3.0f) {
             imageSize.height = (imageSize.height*(contentWidth*2/3.0f))/imageSize.width ;
             imageSize.width=  contentWidth*2/3.0f ;
